@@ -1,28 +1,27 @@
-export function getMealsFromApi(setMeals) {
+export function getMealFromApiById(setMeal, itemId) {
   return fetch(
-    'https://playground.devskills.co/api/rest/meal-roulette-app/meals',
+    'https://playground.devskills.co/api/rest/meal-roulette-app/meals/' +
+      itemId,
   )
     .then((response) => response.json())
     .then((json) => {
-      setMeals(json.meal_roulette_app_meals)
+      setMeal(json.meal_roulette_app_meals_by_pk)
     })
     .catch((error) => {
-      console.error(error)
+      console.log('ERROR', error)
     })
 }
 
-export function getMealsFromApiById(setMealsById, acctiveNum) {
+export function getMealsFromApi(setMealsById, acctiveNum) {
   return fetch(
     'https://playground.devskills.co/api/rest/meal-roulette-app/meals/limit/4/offset/' +
-      ac,
+      acctiveNum,
   )
     .then((response) => response.json())
     .then((json) => {
-      console.log('här')
-
       setMealsById(json.meal_roulette_app_meals_aggregate.nodes)
     })
     .catch((error) => {
-      console.error(error)
+      console.log('ERROR', error)
     })
 }
