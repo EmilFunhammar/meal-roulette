@@ -12,7 +12,12 @@ import { getMealsFromApi } from '../UserActions/userACtions'
 let acctiveNum = 0
 
 export default function MealSelection({ navigation }) {
-  const [mealsById, setMealsById] = useState(['', '', '', ''])
+  const [mealsById, setMealsById] = useState([
+    { title: ' ' },
+    { title: ' ' },
+    { title: ' ' },
+    { title: ' ' },
+  ])
 
   const refresh = () => {
     acctiveNum += 4
@@ -24,13 +29,7 @@ export default function MealSelection({ navigation }) {
   }, [])
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          width: '100%',
-          height: '81%',
-          justifyContent: 'space-evenly',
-        }}
-      >
+      <View style={styles.mealsView}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
           <TouchableOpacity
             style={{ alignItems: 'center' }}
@@ -64,8 +63,7 @@ export default function MealSelection({ navigation }) {
               }}
             />
             <Text style={styles.imagesText}>
-              {' '}
-              {mealsById[1].title.split(' ').slice(0, 3).join(' ')}{' '}
+              ´{mealsById[1].title.split(' ').slice(0, 3).join(' ')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -109,15 +107,7 @@ export default function MealSelection({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
-      <View
-        style={{
-          width: '100%',
-          height: '20%',
-          justifyContent: 'center',
-          borderTopColor: 'black',
-          borderTopWidth: 2,
-        }}
-      >
+      <View style={styles.lowerScreenView}>
         <TouchableOpacity
           style={{
             justifyContent: 'center',
@@ -160,5 +150,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 100,
+  },
+  lowerScreenView: {
+    width: '100%',
+    height: '20%',
+    justifyContent: 'center',
+    borderTopColor: 'black',
+    borderTopWidth: 2,
+  },
+  mealsView: {
+    width: '100%',
+    height: '81%',
+    justifyContent: 'space-evenly',
   },
 })

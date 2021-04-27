@@ -20,14 +20,7 @@ export default function SelaectedMeal({ route }) {
   }, [])
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: '100%',
-          height: '40%',
-        }}
-      >
+      <View style={styles.imagesView}>
         <Image
           style={styles.images}
           source={{
@@ -35,38 +28,11 @@ export default function SelaectedMeal({ route }) {
           }}
         />
       </View>
-      <Text
-        style={{
-          marginTop: 15,
-          fontSize: 26,
-          marginLeft: '2,5%',
-          fontWeight: 'bold',
-        }}
-      >
-        {meal.title}
-      </Text>
-      <Text
-        style={{
-          marginTop: 15,
-          width: '90%',
-          fontSize: 24,
-          marginLeft: '2,5%',
-        }}
-      >
-        {meal.description}
-      </Text>
-      <Text
-        style={{
-          marginTop: 15,
-          fontSize: 26,
-          fontWeight: 'bold',
-          marginLeft: '2,5%',
-        }}
-      >
-        ingredients
-      </Text>
+      <Text style={styles.mealTitle}>{meal.title}</Text>
+      <Text style={styles.descriptionText}>{meal.description}</Text>
+      <Text style={styles.ingredientsTitle}>ingredients</Text>
       <ScrollView style={{ fontSize: 24, marginLeft: '2,5%' }}>
-        <Text style={{ fontSize: 20 }}>
+        <Text style={styles.ingredientsText}>
           {meal.ingredients.split(',').join('\n' + '-')}
         </Text>
       </ScrollView>
@@ -90,5 +56,34 @@ const styles = StyleSheet.create({
   imagesText: {
     fontSize: 16,
     width: 100,
+  },
+  ingredientsTitle: {
+    marginTop: 15,
+    fontSize: 26,
+    fontWeight: 'bold',
+    marginLeft: '2,5%',
+  },
+  ingredientsText: {
+    fontSize: 20,
+    fontWeight: '400',
+    marginLeft: '2,5%',
+  },
+  descriptionText: {
+    marginTop: 15,
+    width: '90%',
+    fontSize: 24,
+    marginLeft: '2,5%',
+  },
+  mealTitle: {
+    marginTop: 15,
+    fontSize: 26,
+    marginLeft: '2,5%',
+    fontWeight: 'bold',
+  },
+  imagesView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '40%',
   },
 })
